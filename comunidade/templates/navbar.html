@@ -1,0 +1,46 @@
+<script src="https://kit.fontawesome.com/3b186d79c9.js" crossorigin="anonymous"></script>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    
+    <div class="container-fluid container">
+        <i class="fa-solid fa-futbol p-3"></i>
+     <a class="navbar-brand" href="{{url_for('home')}}">
+        Gol de placa
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Inicio</a>
+              </li>
+              <li class="nav-item active">
+                  <a class="nav-link active" href="{{url_for('usuarios')}}">Usuários</a>
+              </li>
+          </ul>
+          <ul class="d-flex navbar-nav ">
+              {% if current_user.is_authenticated %}
+              <li class="nav-item active">
+                  <a class="nav-link active" href="{{url_for('criar_post')}}">Criar post</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url_for('perfil')}}">Meu perfil</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url_for('sair')}}">Sair</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url_for('login')}}">Login</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="{{url_for('login')}}">Criar conta</a>
+              </li>
+              {% endif %}
+          </ul>
+      </div>
+  </div>
+
+</nav>

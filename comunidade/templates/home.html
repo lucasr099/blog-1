@@ -1,0 +1,33 @@
+{%  extends "base.html" %}
+
+{% block body %}
+<style>
+    h1{
+        color: antiquewhite;
+    }
+</style>
+<div class="container mt-3">
+    <h1 class="gol-placa text-center">Gol de placa</h1>
+    <hr>
+    {% for post in posts %}
+    <div class="row border mt-4 p-3 meupost">
+        <div class="col col-3">
+            <div class="image text-center">
+                <img src="{{ url_for('static', filename='foto_perfil/' + post.autor.foto_perfil) }}" class="rounded img-fluid">
+            </div>
+            <strong>{{ post.autor.username }}</strong>
+            {% if usuario.time_futebol %}
+                <p>{{ usuario.time_futebol | capitalize }}</p>
+            {% else %}
+                <p>Time de futebol não informado</p>
+            {% endif %}
+        </div>
+        <div class="col col-9">
+            <a href="{{ url_for('exibir_post', id=post.id) }}" class="post-link"><h3>{{ post.titulo }}</h3></a>
+            <a href="{{ url_for('exibir_post', id=post.id) }}" class="post-link"><p>{{ post.corpo }}</p></a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}
